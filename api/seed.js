@@ -1,13 +1,11 @@
-const path = require('path');
-const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const User = require('./models/User');
 const Product = require('./models/Product');
 const Order = require('./models/Order');
 const bcrypt = require('bcryptjs');
 
-// This forces Node to find the .env file in your root directory from anywhere
-dotenv.config({ path: path.join(__dirname, '../.env') });
+// Explicitly forces the database connection string directly into code memory
+process.env.MONGO_URI = "mongodb+srv://trizenmart:mlTsdKJ1DMqTsFo5@trizenmart.uihfkzd.mongodb.net/trizenmart?retryWrites=true&w=majority";
 
 const sampleProducts = [
   {
