@@ -5,11 +5,11 @@ import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 
 const Layout = () => (
-  <div className="min-h-screen bg-white text-slate-900">
+  <div className="min-h-screen bg-slate-50 text-slate-900">
     <Topbar />
     <Header />
     <Navbar />
-    <main className="container mx-auto px-4 py-6">
+    <main className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
       <Outlet />
     </main>
     <Footer />

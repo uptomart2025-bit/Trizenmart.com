@@ -8,26 +8,26 @@ const categories = [
 
 const Categories = () => (
   <section className="space-y-4">
-    <div className="flex gap-4 overflow-x-auto px-1 pb-2 sm:hidden">
+    <div className="flex gap-3 overflow-x-auto px-1 pb-2 sm:hidden">
       {categories.map((category) => (
         <Link
           key={category.name}
           to="/shop"
-          className="shrink-0 min-w-[220px] rounded-3xl border border-slate-200 bg-white p-4 shadow-sm"
+          className="shrink-0 min-w-[200px] rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
         >
-          <p className="text-sm font-semibold text-dark">{category.name}</p>
-          <p className="mt-1 text-xs text-slate-500">{category.count} products</p>
+          <p className="text-base font-semibold text-slate-900">{category.name}</p>
+          <p className="mt-2 text-xs text-slate-500">{category.count} products</p>
         </Link>
       ))}
     </div>
     <div className="grid gap-4 md:grid-cols-3">
       {categories.map((category) => (
-        <Link key={category.name} to="/shop" className="group relative overflow-hidden rounded-3xl">
+        <Link key={category.name} to="/shop" className="group relative overflow-hidden rounded-[2rem] shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
           <img src={category.image} alt={category.name} className="h-72 w-full object-cover transition duration-500 group-hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 text-white">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+          <div className="absolute bottom-5 left-5 text-white">
             <h3 className="text-2xl font-semibold">{category.name}</h3>
-            <p className="text-sm">{category.count} Products</p>
+            <p className="mt-1 text-sm text-slate-200">{category.count} products</p>
           </div>
         </Link>
       ))}

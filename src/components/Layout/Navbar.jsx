@@ -1,53 +1,57 @@
 import { Link } from 'react-router-dom';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiHome, FiShoppingBag, FiShoppingCart, FiUser } from 'react-icons/fi';
 
 const categories = ['Dresses', 'Shirts', 'Jeans', 'Swimwear', 'Sportswear', 'Shoes'];
 const links = [
   { label: 'Home', to: '/' },
   { label: 'Shop', to: '/shop' },
-  { label: 'Shop Detail', to: '/product/1' },
   { label: 'Cart', to: '/cart' },
   { label: 'Checkout', to: '/checkout' },
-  { label: 'Contact', to: '/contact' },
-  { label: 'Login', to: '/login' },
-  { label: 'Register', to: '/register' }
+  { label: 'Contact', to: '/contact' }
 ];
 
 const Navbar = () => (
-  <div className="bg-white shadow-sm">
-    <div className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-4">
-      <div className="group relative">
-        <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 min-h-[48px]">
-          Categories <FiChevronDown />
-        </button>
-        <div className="invisible absolute left-0 top-full z-10 mt-2 w-48 rounded-xl border border-slate-200 bg-white p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          {categories.map((item) => (
-            <Link key={item} to="/shop" className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-secondary">
-              {item}
-            </Link>
-          ))}
-        </div>
+  <nav className="bg-white shadow-sm">
+    <div className="container mx-auto hidden items-center justify-between gap-6 px-4 py-4 sm:flex sm:px-6 lg:px-8">
+      <div className="flex flex-wrap items-center gap-3">
+        {categories.slice(0, 5).map((item) => (
+          <Link
+            key={item}
+            to="/shop"
+            className="rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-primary hover:text-primary"
+          >
+            {item}
+          </Link>
+        ))}
       </div>
-      <div className="flex flex-wrap items-center gap-3 text-sm font-medium text-slate-600">
+      <div className="flex flex-wrap items-center gap-5 text-sm font-medium text-slate-600">
         {links.map((link) => (
-          <Link key={link.to} to={link.to} className="hover:text-primary">
+          <Link key={link.to} to={link.to} className="transition hover:text-primary">
             {link.label}
           </Link>
         ))}
       </div>
     </div>
-    <div className="flex overflow-x-auto gap-3 border-t border-slate-200 bg-white px-4 py-3 sm:hidden">
-      {categories.map((item) => (
-        <Link
-          key={item}
-          to="/shop"
-          className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
-        >
-          {item}
-        </Link>
-      ))}
+
+    <div className="sticky bottom-0 z-40 flex items-center justify-between gap-2 overflow-x-auto border-t border-slate-200 bg-white px-4 py-3 text-slate-700 sm:hidden">
+      <Link to="/" className="inline-flex min-w-[72px] flex-col items-center justify-center gap-1 rounded-3xl bg-slate-50 px-3 py-3 text-[0.75rem] font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary">
+        <FiHome className="h-5 w-5" />
+        Home
+      </Link>
+      <Link to="/shop" className="inline-flex min-w-[72px] flex-col items-center justify-center gap-1 rounded-3xl bg-slate-50 px-3 py-3 text-[0.75rem] font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary">
+        <FiShoppingBag className="h-5 w-5" />
+        Shop
+      </Link>
+      <Link to="/cart" className="inline-flex min-w-[72px] flex-col items-center justify-center gap-1 rounded-3xl bg-slate-50 px-3 py-3 text-[0.75rem] font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary">
+        <FiShoppingCart className="h-5 w-5" />
+        Cart
+      </Link>
+      <Link to="/profile" className="inline-flex min-w-[72px] flex-col items-center justify-center gap-1 rounded-3xl bg-slate-50 px-3 py-3 text-[0.75rem] font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary">
+        <FiUser className="h-5 w-5" />
+        Account
+      </Link>
     </div>
-  </div>
+  </nav>
 );
 
 export default Navbar;
