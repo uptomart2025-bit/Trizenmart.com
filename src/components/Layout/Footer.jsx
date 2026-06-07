@@ -7,27 +7,27 @@ const Footer = () => (
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-white">E-Shopper</h3>
         <p className="text-sm leading-6 text-slate-400">
-          Fast checkout, transparent order tracking, and a mobile-friendly storefront built for modern shoppers.
+          Fresh collections, secure checkout, and fast delivery — built on a clean, modern experience.
         </p>
       </div>
       <div className="space-y-3">
-        <h4 className="font-semibold text-white">Company</h4>
+        <h4 className="font-semibold text-white">Explore</h4>
         <div className="space-y-2 text-sm text-slate-400">
-          <Link to="/shop" className="block transition hover:text-white">About</Link>
-          <Link to="/contact" className="block transition hover:text-white">Careers</Link>
-          <Link to="/" className="block transition hover:text-white">Blog</Link>
+          <Link to="/shop" className="block transition hover:text-white">Shop</Link>
           <Link to="/contact" className="block transition hover:text-white">Contact</Link>
+          <Link to="/policy" className="block transition hover:text-white">Policy</Link>
+          <Link to="/orders" className="block transition hover:text-white">Orders</Link>
         </div>
       </div>
       <div className="space-y-3">
-        <h4 className="font-semibold text-white">Contact</h4>
+        <h4 className="font-semibold text-white">Get in touch</h4>
         <p className="text-sm text-slate-400">123 Rose Avenue, Tech City</p>
         <p className="text-sm text-slate-400">support@eshopper.com</p>
         <p className="text-sm text-slate-400">+1 (555) 123-4567</p>
       </div>
       <div className="space-y-3">
         <h4 className="font-semibold text-white">Newsletter</h4>
-        <p className="text-sm text-slate-400">Get early access to new collections and promo offers.</p>
+        <p className="text-sm text-slate-400">Subscribe for new arrivals, offers, and updates.</p>
         <div className="flex flex-col gap-3 sm:flex-row">
           <input type="email" placeholder="Email address" className="flex-1 rounded-full border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-200 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30" />
           <button className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#BD8E88]">Subscribe</button>
