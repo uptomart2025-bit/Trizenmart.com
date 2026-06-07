@@ -32,16 +32,16 @@ const Header = () => {
           <input
             type="text"
             placeholder="Search products..."
-            className="w-full rounded-full border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
+            className="w-full rounded-full border border-slate-200 bg-white py-4 pl-12 pr-4 text-sm shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </div>
-        <div className="flex items-center gap-4 text-slate-600">
-          <Link to="/wishlist" className="relative flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 hover:border-primary hover:text-primary">
-            <FiHeart /> Wishlist
+        <div className="flex flex-wrap items-center gap-3 text-slate-600">
+          <Link to="/wishlist" className="relative flex min-h-[48px] items-center gap-2 rounded-full border border-slate-200 px-4 py-3 hover:border-primary hover:text-primary">
+            <FiHeart className="h-4 w-4" /> Wishlist
             {wishlistCount > 0 && <span className="absolute -right-2 -top-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs text-white">{wishlistCount}</span>}
           </Link>
-          <Link to="/cart" className="relative flex items-center gap-2 rounded-full border border-slate-200 bg-primary/10 px-4 py-2 text-primary hover:bg-primary/15">
-            <FiShoppingCart /> Cart
+          <Link to="/cart" className="relative flex min-h-[48px] items-center gap-2 rounded-full border border-slate-200 bg-primary/10 px-4 py-3 text-primary hover:bg-primary/15">
+            <FiShoppingCart className="h-4 w-4" /> Cart
             {cartCount > 0 && <span className="absolute -right-2 -top-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-dark text-xs text-white">{cartCount}</span>}
           </Link>
 

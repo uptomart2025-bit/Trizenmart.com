@@ -17,7 +17,7 @@ const Navbar = () => (
   <div className="bg-white shadow-sm">
     <div className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-4">
       <div className="group relative">
-        <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800">
+        <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 min-h-[48px]">
           Categories <FiChevronDown />
         </button>
         <div className="invisible absolute left-0 top-full z-10 mt-2 w-48 rounded-xl border border-slate-200 bg-white p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
@@ -35,6 +35,17 @@ const Navbar = () => (
           </Link>
         ))}
       </div>
+    </div>
+    <div className="flex overflow-x-auto gap-3 border-t border-slate-200 bg-white px-4 py-3 sm:hidden">
+      {categories.map((item) => (
+        <Link
+          key={item}
+          to="/shop"
+          className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
+        >
+          {item}
+        </Link>
+      ))}
     </div>
   </div>
 );

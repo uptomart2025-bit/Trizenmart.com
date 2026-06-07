@@ -1,7 +1,8 @@
-const baseUrl = import.meta.env.VITE_API_URL || '';
+const baseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+const apiPath = (path) => `${baseUrl}${path.startsWith('/api') ? path : `/api${path}`}`;
 
 async function request(path, options = {}) {
-  const response = await fetch(`${baseUrl}${path}`, {
+  const response = await fetch(apiPath(path), {
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
@@ -12,7 +13,7 @@ async function request(path, options = {}) {
 
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(payload.message || 'Request failed');
+    throw new Error(payload.message || response.statusText || 'Request failed');
   }
 
   return payload;

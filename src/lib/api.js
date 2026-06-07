@@ -1,7 +1,10 @@
 import { mockData } from '../data/mockData.js';
 
+const apiBase = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+const apiPath = (url) => `${apiBase}${url.startsWith('/api') ? url : `/api${url}`}`;
+
 export async function apiFetch(url, options = {}) {
-  const endpoint = `${import.meta.env.VITE_API_URL}${url}`;
+  const endpoint = apiPath(url);
 
   try {
     const response = await fetch(endpoint, {
@@ -35,6 +38,6 @@ export async function apiFetch(url, options = {}) {
     if (url.startsWith('/auth')) {
       return { success: true };
     }
-    return {};
+    throw error;
   }
 }

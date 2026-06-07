@@ -1,4 +1,4 @@
-import Hero from '../components/Route/Hero.jsx';
+import HeroGuard from '../components/Route/HeroGuard.jsx';
 import BestDeals from '../components/Route/BestDeals.jsx';
 import Categories from '../components/Route/Categories.jsx';
 import ProductCard from '../components/Route/ProductCard.jsx';
@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div className="space-y-10">
-      <Hero />
+      <HeroGuard />
       <section>
         <h2 className="mb-6 text-3xl font-bold text-dark">Why E-Shopper?</h2>
         <BestDeals />

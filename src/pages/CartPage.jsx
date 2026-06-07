@@ -20,7 +20,7 @@ const CartPage = () => {
   }, [orders, user]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-24 sm:pb-0">
       <h1 className="text-3xl font-bold text-dark">Your Cart</h1>
       <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
         <div className="space-y-4">
@@ -92,9 +92,25 @@ const CartPage = () => {
             <span>Total</span>
             <span>${subtotal.toFixed(2)}</span>
           </div>
-          <Link to="/checkout" className="block rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-white hover:bg-[#BD8E88]">
+          <Link to="/checkout" className="hidden rounded-full bg-primary px-6 py-4 text-center text-sm font-semibold text-white hover:bg-[#BD8E88] sm:inline-flex sm:justify-center">
             Proceed to Checkout
           </Link>
+          <div className="fixed inset-x-0 bottom-0 z-30 sm:hidden">
+            <div className="mx-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_-16px_40px_rgba(15,23,42,0.12)]">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Total</p>
+                  <p className="text-lg font-semibold text-dark">${subtotal.toFixed(2)}</p>
+                </div>
+                <Link
+                  to="/checkout"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-[#BD8E88]"
+                >
+                  Checkout
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
