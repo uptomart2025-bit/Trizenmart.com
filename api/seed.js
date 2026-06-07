@@ -1,3 +1,4 @@
+const path = require('path');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const User = require('./models/User');
@@ -5,7 +6,8 @@ const Product = require('./models/Product');
 const Order = require('./models/Order');
 const bcrypt = require('bcryptjs');
 
-dotenv.config();
+// This forces Node to find the .env file in your root directory from anywhere
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const sampleProducts = [
   {
@@ -65,26 +67,31 @@ const sampleProducts = [
 ];
 
 const seed = async () => {
-  await connectDB();
-  await Order.deleteMany();
-  await Product.deleteMany();
-  await User.deleteMany();
+  try {
+    await connectDB();
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
 
-  const adminPassword = await bcrypt.hash('Admin@2024', 10);
-  await User.create({ name: 'Admin User', email: 'admin@shop.com', password: adminPassword, role: 'admin' });
-  await Product.insertMany(sampleProducts);
-  await Order.create({
-    customerName: 'Jane Doe',
-    customerEmail: 'jane@example.com',
-    items: [{ productId: null, name: 'Rose Lace Dress', quantity: 1, price: 89.99 }],
-    total: 89.99,
-    status: 'Delivered',
-    statusHistory: [{ status: 'Processing', date: new Date() }, { status: 'Delivered', date: new Date() }],
-    trackingId: 'PX-1001'
-  });
+    const adminPassword = await bcrypt.hash('Admin@2024', 10);
+    await User.create({ name: 'Admin User', email: 'admin@shop.com', password: adminPassword, role: 'admin' });
+    await Product.insertMany(sampleProducts);
+    await Order.create({
+      customerName: 'Jane Doe',
+      customerEmail: 'jane@example.com',
+      items: [{ productId: null, name: 'Rose Lace Dress', quantity: 1, price: 89.99 }],
+      total: 89.99,
+      status: 'Delivered',
+      statusHistory: [{ status: 'Processing', date: new Date() }, { status: 'Delivered', date: new Date() }],
+      trackingId: 'PX-1001'
+    });
 
-  console.log('Seed data created');
-  process.exit();
+    console.log('Seed data created successfully!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Seed process failed:', error.message);
+    process.exit(1);
+  }
 };
 
 seed();
